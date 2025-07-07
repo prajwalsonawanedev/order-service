@@ -1,8 +1,14 @@
 package com.orderservice.entity;
 
+import com.orderservice.enums.OrderStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -14,14 +20,30 @@ import lombok.*;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long orderId;
 
-    private String productName;
+    @Column(nullable = false)
+    private String userId;
 
+    @Column(nullable = false)
+    private String stockId;
+
+    @Column(nullable = false)
     private Integer quantity;
+
+    @Column(nullable = false)
+    private Double price;
+
+    @Column(nullable = false)
+    private Double totalAmount;
 
     private String status;
 
-    private Double price;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+
 }
