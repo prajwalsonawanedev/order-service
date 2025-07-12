@@ -11,9 +11,9 @@ public class OrderCreatdProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessageToTopic(String message) {
+    public void sendMessageToTopic(String topic, String message) {
         System.out.println("inside ordercreated producer");
-        kafkaTemplate.send("order-created", message);
+        kafkaTemplate.send(topic, message);
     }
 
 }

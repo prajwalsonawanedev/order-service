@@ -8,6 +8,8 @@ public class ApiResponse<T> {
 
     private T data;
 
+    private String additionalMessage;
+
     public ApiResponse() {
 
     }
@@ -18,8 +20,15 @@ public class ApiResponse<T> {
         this.data = data;
     }
 
-    public static <T> ApiResponse<T> response(String message, boolean success, T data) {
-        return new ApiResponse<>(message, success, data);
+    public ApiResponse(String message, boolean success, String additionalMessage, T data) {
+        this.message = message;
+        this.success = success;
+        this.additionalMessage = additionalMessage;
+        this.data = data;
+    }
+
+    public static <T> ApiResponse<T> response(String message, boolean success, String additionalMessage, T data) {
+        return new ApiResponse<>(message, success, additionalMessage, data);
     }
 
     public String getMessage() {
