@@ -1,5 +1,6 @@
 package com.orderservice.response;
 
+import com.orderservice.dto.MasterDto;
 import com.orderservice.enums.OrderStatus;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class OrderResponseDto {
+public class OrderResponseDto implements MasterDto {
 
     private Long orderId;
 

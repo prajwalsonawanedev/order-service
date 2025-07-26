@@ -85,9 +85,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public void rejectOrderDueToValidation(OrderUserDto orderUserDto) {
-        String message = jsonUtil.toJson(orderUserDto);
+      //  String message = jsonUtil.toJson(orderUserDto);
 
-        orderCreatdProducer.sendMessageToTopic("order-user-rejected", message);
+       // orderCreatdProducer.sendMessageToTopic("order-user-rejected", orderUserDto);
 
     }
 

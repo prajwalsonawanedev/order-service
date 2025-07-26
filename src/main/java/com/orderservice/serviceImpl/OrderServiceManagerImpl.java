@@ -42,8 +42,8 @@ public class OrderServiceManagerImpl implements OrderServiceManager {
         OrderResponseDto orderResponseDto = genericMapper.convert(order, OrderResponseDto.class);
         NotificationDto notificationDto = createNotificationDto(orderResponseDto, errorMessage, false);
 
-        String jsonMessage = jsonUtil.toJson(notificationDto);
-        orderCreatdProducer.sendMessageToTopic("notify", jsonMessage);
+        //String jsonMessage = jsonUtil.toJson(notificationDto);
+        orderCreatdProducer.sendMessageToTopic("notify", notificationDto);
         return orderResponseDto;
     }
 
@@ -57,8 +57,8 @@ public class OrderServiceManagerImpl implements OrderServiceManager {
 
         OrderResponseDto orderResponseDto = genericMapper.convert(order, OrderResponseDto.class);
         NotificationDto notificationDto = createNotificationDto(orderResponseDto, null, true);
-        String jsonMessage = jsonUtil.toJson(notificationDto);
-        orderCreatdProducer.sendMessageToTopic("notify", jsonMessage);
+        //String jsonMessage = jsonUtil.toJson(notificationDto);
+        orderCreatdProducer.sendMessageToTopic("notify", notificationDto);
         return orderResponseDto;
     }
 
@@ -73,13 +73,13 @@ public class OrderServiceManagerImpl implements OrderServiceManager {
 
     public NotificationDto createNotificationDto(OrderResponseDto orderResponseDto, String errorMessage, Boolean isSuccess) {
 
-        String message = jsonUtil.toJson(orderResponseDto);
+        //String message = jsonUtil.toJson(orderResponseDto);
         return NotificationDto
                 .builder()
                 .serviceName("order-service")
                 .isSuccess(isSuccess)
                 .reasonOfFailure(errorMessage)
-                .message(message)
+                .masterDto(orderResponseDto)
                 .build();
     }
 }

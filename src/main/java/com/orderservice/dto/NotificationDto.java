@@ -1,14 +1,12 @@
 package com.orderservice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class NotificationDto {
 
     private String serviceName;
@@ -17,6 +15,8 @@ public class NotificationDto {
 
     private Boolean isSuccess;
 
-    private String message;
+    //  private String message;
+
+    private MasterDto masterDto;
 
 }
