@@ -40,13 +40,6 @@ public class OrderServiceImpl implements OrderService {
 
     private List<String> errorList = new ArrayList<>();
 
-//    public OrderServiceImpl(OrderRepository orderRepository, GenericMapper genericMapper, OrderCreatdProducer orderCreatdProducer, JsonUtil jsonUtil) {
-//        this.orderRepository = orderRepository;
-//        this.genericMapper = genericMapper;
-//        this.orderCreatdProducer = orderCreatdProducer;
-//        this.jsonUtil = jsonUtil;
-//    }
-
     @Override
     public ApiResponse createOrder(OrderRequestDto orderRequestDto) {
 

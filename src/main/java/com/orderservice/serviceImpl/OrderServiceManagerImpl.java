@@ -8,7 +8,6 @@ import com.orderservice.enums.OrderStatus;
 import com.orderservice.kafka.OrderCreatdProducer;
 import com.orderservice.repository.OrderRepository;
 import com.orderservice.response.OrderResponseDto;
-import com.orderservice.service.OrderService;
 import com.orderservice.service.OrderServiceManager;
 import com.orderservice.util.GenericMapper;
 import com.orderservice.util.JsonUtil;

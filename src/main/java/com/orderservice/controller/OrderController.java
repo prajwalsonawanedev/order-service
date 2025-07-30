@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/order-service")
+@RequestMapping("/api/order-service")
 public class OrderController {
 
     private final OrderService orderService;
@@ -17,13 +17,13 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/create-order")
+    @PostMapping
     public ResponseEntity<ApiResponse> createOrder(@RequestBody OrderRequestDto orderRequestDto) {
         ApiResponse apiResponse = orderService.createOrder(orderRequestDto);
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/orders")
+    @GetMapping
     public ResponseEntity<ApiResponse> getAllOrders() {
         ApiResponse apiResponse = orderService.getAllOrders();
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);

@@ -11,15 +11,20 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true  # Optional: shows SQL queries in console
+    show-sql: true
 
 kafka:
   producer:
     bootstrap-servers: localhost:9092
     key-serializer: org.apache.kafka.common.serialization.StringSerializer
-    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    properties:
+      spring.json.trusted.packages: "*"
 
   consumer:
-    bootstrap-servers: localhost:9092
+    group-id: order-service-group  # <-- Mandatory!
     key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    properties:
+      spring.json.trusted.packages: "*"
+#      spring.json.value.default.type: com.orderservice.dto.NotificationDto  # <-- If Not using Generics
